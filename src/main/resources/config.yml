@@ -34,6 +34,7 @@ text:
 display:
   #TODO: bossbar
   mode: "actionBar" # available options: actionBar
+  showWhenFull: false
 
   actionBarPercentageStyles:
     #IMPORTANT: the numbers are in percentages, not oxygen values.

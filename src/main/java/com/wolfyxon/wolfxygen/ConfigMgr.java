@@ -54,5 +54,6 @@ public class ConfigMgr {
     public double getDamage(){ return config.getDouble("numbers.damage"); }
 
     public String getDisplayMode(){ return config.getString("display.mode").toLowerCase(); }
+    public boolean getShowWhenFull(){ return  config.getBoolean("display.showWhenFull");}
     public Map<Integer,String> getActionBarStyles(){ return getIntStringMap("display.actionBarPercentageStyles"); }
 }
