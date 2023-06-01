@@ -11,12 +11,14 @@ public final class Wolfxygen extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-
-        oxygenMgr.applyConfig();
-        oxygenMgr.start();
-
+        loadConfig();
         getLogger().info("Enabled");
     }
+    public void loadConfig(){
+        oxygenMgr.applyConfig();
+        oxygenMgr.start();
+    }
+
 
     @Override
     public void onDisable() {
