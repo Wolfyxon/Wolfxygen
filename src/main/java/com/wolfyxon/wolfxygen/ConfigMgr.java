@@ -6,6 +6,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,4 +70,23 @@ public class ConfigMgr {
     public String getDisplayMode(){ return config.getString("display.mode").toLowerCase(); }
     public boolean getShowWhenFull(){ return  config.getBoolean("display.showWhenFull");}
     public Map<Integer,String> getActionBarStyles(){ return getIntStringMap("display.actionBarPercentageStyles"); }
+
+    public String getActionBarText(double oxygen, double maxOxygen){
+        Map<Integer,String> styles = getActionBarStyles();
+        double percent = oxygen/maxOxygen;
+        Integer[] percentages = (Integer[]) styles.entrySet().toArray();
+        Arrays.sort(percentages);
+        int targetPercent = 0;
+        System.out.println(Arrays.toString(percentages));
+        for(Integer p : percentages){
+            if(percent >= p){
+                targetPercent = p;
+            } else {
+                break;
+            }
+        }
+        if(!styles.containsKey(targetPercent)) return null;
+        return styles.get(targetPercent);
+    }
+
 }
