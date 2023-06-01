@@ -32,8 +32,7 @@ public class OxygenMgr {
     Map<Player,Double> oxygenAmount = new HashMap<>();
 
     public void start(){
-        if(task != null) task.cancel();
-
+        stop();
         task = scheduler.runTaskTimer(plugin, () -> {
                 for(Player plr : Bukkit.getOnlinePlayers()){
                     if(isAffected(plr)){
@@ -46,6 +45,9 @@ public class OxygenMgr {
                     }
                 }
         }, 0, interval);
+    }
+    public void stop(){
+        if(task != null) task.cancel();
     }
     public boolean isAffected(Player player){
         if(!player.isOnline()) return false;
