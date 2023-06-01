@@ -3,6 +3,7 @@ package com.wolfyxon.wolfxygen;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
 
@@ -26,12 +27,14 @@ public class OxygenMgr {
     }
 
     BukkitScheduler scheduler = Bukkit.getScheduler();
-    Timer timer;
+    BukkitTask task;
 
     Map<Player,Double> oxygenAmount = new HashMap<>();
 
     public void start(){
-        scheduler.runTaskTimer(plugin, () -> {
+        if(task != null) task.cancel();
+
+        task = scheduler.runTaskTimer(plugin, () -> {
                 for(Player plr : Bukkit.getOnlinePlayers()){
                     if(isAffected(plr)){
                         plr.sendMessage(String.valueOf(getOxygen(plr)));
