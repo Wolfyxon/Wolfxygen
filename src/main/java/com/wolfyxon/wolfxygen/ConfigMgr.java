@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,11 @@ public class ConfigMgr {
         if(msg == null) return null;
         return ChatColor.translateAlternateColorCodes('&',msg);
     }
-
+    public void sendMessage(Player player, String messageSubPath){
+        String msg = getMessage(messageSubPath);
+        if(msg == null) return;
+        player.sendMessage(msg);
+    }
     public Map<String,Object> getMap(String path){
         ConfigurationSection section = config.getConfigurationSection(path);
         Map<String,Object> map = new HashMap<>();
