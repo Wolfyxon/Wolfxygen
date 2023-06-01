@@ -19,10 +19,14 @@ public class ConfigMgr {
         config = plugin.getConfig();
     }
 
+    public String format(String text){
+        return ChatColor.translateAlternateColorCodes('&',text);
+    }
+
     public String getMessage(String subPath){
         String msg = config.getString("message."+subPath);
         if(msg == null) return null;
-        return ChatColor.translateAlternateColorCodes('&',msg);
+        return format(msg);
     }
     public void sendMessage(Player player, String messageSubPath){
         String msg = getMessage(messageSubPath);
@@ -86,7 +90,7 @@ public class ConfigMgr {
             }
         }
         if(!styles.containsKey(targetPercent)) return null;
-        return styles.get(targetPercent);
+        return format( styles.get(targetPercent) );
     }
 
 }
