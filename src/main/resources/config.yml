@@ -39,6 +39,7 @@ display:
 
   actionBarPercentageStyles:
     #IMPORTANT: the numbers are in percentages, not oxygen values.
+    #{oxygen} will be replaced by the player's oxygen amount.
     80: "&b☁️{oxygen}"
     40: "&6☁️{oxygen}"
     30: "&c☁️{oxygen}"
