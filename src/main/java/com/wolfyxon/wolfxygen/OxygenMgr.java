@@ -1,5 +1,7 @@
 package com.wolfyxon.wolfxygen;
 
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -53,6 +55,15 @@ public class OxygenMgr {
     public void stop(){
         if(task != null) task.cancel();
     }
+
+    public void startRendering(){
+        scheduler.runTaskTimer(plugin, () -> {
+            for(Player plr : Bukkit.getOnlinePlayers()){
+                plr.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(plugin.config.getActionBarText(getOxygen(plr),maxOxygen)));
+            }
+        },0,5L);
+    }
+
     public boolean isAffected(Player player){
         if(!player.isOnline()) return false;
         if(player.isDead()) return false;
@@ -83,5 +94,7 @@ public class OxygenMgr {
         setOxygen(player,oxygen);
     }
     public void subtractOxygen(Player player){ subtractOxygen(player,oxygenLoss); }
+
+
 
 }
