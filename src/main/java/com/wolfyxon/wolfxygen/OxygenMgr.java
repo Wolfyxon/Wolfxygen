@@ -24,6 +24,10 @@ public class OxygenMgr {
     public void applyConfig(){
         affectedGamemodes = plugin.config.getAffectedGamemodes();
         affectedWorlds = plugin.config.getAffectedWorlds();
+        maxOxygen = plugin.config.getMaxOxygen();
+        oxygenLoss = plugin.config.getSubtractionAmount();
+        damage = plugin.config.getDamage();
+        interval = plugin.config.getIntervalTicks();
     }
 
     BukkitScheduler scheduler = Bukkit.getScheduler();
