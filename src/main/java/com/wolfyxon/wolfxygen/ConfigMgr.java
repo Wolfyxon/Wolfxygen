@@ -1,6 +1,7 @@
 package com.wolfyxon.wolfxygen;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -17,7 +18,9 @@ public class ConfigMgr {
     }
 
     public String getMessage(String subPath){
-        return config.getString("message."+subPath);
+        String msg = config.getString("message."+subPath);
+        if(msg == null) return null;
+        return ChatColor.translateAlternateColorCodes('&',msg);
     }
 
     public Map<String,Object> getMap(String path){
