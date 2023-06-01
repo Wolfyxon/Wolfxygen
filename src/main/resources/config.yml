@@ -1,0 +1,42 @@
+# Wolfxygen
+# by Wolfyxon
+
+# If you're using multiworld you will have to add each nether world name.
+# Worlds are by default located in the server root directory.
+
+affectedWorlds: # Players will have to breath only in these worlds/dimensions
+  - "world_nether"
+  - "world_the_end"
+affectedGamemodes: # Players will have to breath only if they have one of these gamemodes.
+  - "survival"
+  - "adventure"
+
+refillInUnaffectedGamemodes: true
+refillInUnaffectedWorlds: true
+
+waterBreathingPotion:
+  loseOxygen: false # Lose oxygen when has water breathing effect
+  refill: true # Refill oxygen when has water breathing effect
+
+numbers:
+  maxOygen: 100
+  subtractionAmount: 1
+  refillingAmount: 1.5
+  intervalTicks: 20 # Plugin will check, subtract oxygen and damage players every X ticks. 20 ticks == 1 second
+  damage: 0.5 # Damage dealt when player has no oxygen
+
+
+# To disable a message, set it to: ""
+text:
+  fullyRefilledOtherPlayer: "Refilled {playername}'s oxygen."
+  fullyRefilled: "Your oxygen has been refilled."
+
+display:
+  mode: "actionBar" # available options: actionBar, bossBar
+
+  actionBarPercentageStyles:
+    #IMPORTANT: the numbers are in percentages, not oxygen values.
+    80: "&b☁️{oxygen}"
+    40: "&6☁️{oxygen}"
+    30: "&c☁️{oxygen}"
+    10: "&4☁️{oxygen}"

@@ -1,0 +1,5 @@
+name: Wolfxygen
+version: '${project.version}'
+main: com.wolfyxon.wolfxygen.Wolfxygen
+api-version: 1.16
+authors: [ Wolfyxon ]
