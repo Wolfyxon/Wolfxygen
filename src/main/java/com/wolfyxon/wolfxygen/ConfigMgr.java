@@ -1,5 +1,6 @@
 package com.wolfyxon.wolfxygen;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -13,6 +14,10 @@ public class ConfigMgr {
     public ConfigMgr(Wolfxygen plugin){
         this.plugin = plugin;
         config = plugin.getConfig();
+    }
+
+    public String getMessage(String subPath){
+        return config.getString("message."+subPath);
     }
 
     public Map<String,Object> getMap(String path){
