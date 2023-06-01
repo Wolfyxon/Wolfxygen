@@ -32,7 +32,8 @@ text:
   fullyRefilled: "Your oxygen has been refilled."
 
 display:
-  mode: "actionBar" # available options: actionBar, bossBar
+  #TODO: bossbar
+  mode: "actionBar" # available options: actionBar
 
   actionBarPercentageStyles:
     #IMPORTANT: the numbers are in percentages, not oxygen values.
