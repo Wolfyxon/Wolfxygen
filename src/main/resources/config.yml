@@ -19,7 +19,7 @@ waterBreathingPotion:
   refill: true # Refill oxygen when has water breathing effect
 
 numbers:
-  maxOygen: 100
+  maxOxygen: 100
   subtractionAmount: 1
   refillingAmount: 1.5
   intervalTicks: 20 # Plugin will check, subtract oxygen and damage players every X ticks. 20 ticks == 1 second
