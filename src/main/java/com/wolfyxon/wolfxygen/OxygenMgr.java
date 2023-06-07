@@ -3,6 +3,10 @@ package com.wolfyxon.wolfxygen;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
@@ -57,6 +61,21 @@ public class OxygenMgr {
     }
     public void stop(){
         if(task != null) task.cancel();
+    }
+
+    public ArrayList<BossBar> bossBars = new ArrayList<>();
+    public BossBar getBossBar(Player player){
+        for(BossBar b : bossBars){
+            if(b.getPlayers().contains(player)) return b;
+        }
+        return null;
+    }
+    public void createBossBar(Player player){
+        if(getBossBar(player) != null) return;
+        //TODO: bossbar config
+        BossBar bossBar = Bukkit.createBossBar("Oxygen", BarColor.WHITE, BarStyle.SOLID);
+        bossBar.addPlayer(player);
+        bossBars.add(bossBar);
     }
 
     public void startRendering(){
