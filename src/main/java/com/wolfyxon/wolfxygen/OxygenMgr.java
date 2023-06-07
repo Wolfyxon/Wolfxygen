@@ -53,7 +53,6 @@ public class OxygenMgr {
                         subtractOxygen(plr);
                         if(getOxygen(plr) <= 0){
                             plr.damage(damage);
-
                         }
                     }
                 }
