@@ -29,6 +29,9 @@ public class OxygenMgr {
     List affectedGamemodes = List.of("survival","adventure");
     List affectedWorlds = List.of("world_nether","world_the_end");
 
+    public String bossBarTitle = "Oxygen";
+    public BarColor bossBarColor = BarColor.WHITE;
+
     Map<Integer,String> actionBarStyles;
 
     public void applyConfig(){
@@ -40,6 +43,9 @@ public class OxygenMgr {
         damage = plugin.config.getDamage();
         interval = plugin.config.getIntervalTicks();
         oxygenRefilling = plugin.config.getRefillingAmount();
+
+        bossBarTitle = plugin.config.getBossBarTitle();
+        bossBarColor = plugin.config.getBossBarColor();
     }
 
     BukkitScheduler scheduler = Bukkit.getScheduler();
@@ -78,8 +84,7 @@ public class OxygenMgr {
     }
     public void createBossBar(Player player){
         if(getBossBar(player) != null) return;
-        //TODO: bossbar config
-        BossBar bossBar = Bukkit.createBossBar("Oxygen", BarColor.WHITE, BarStyle.SOLID);
+        BossBar bossBar = Bukkit.createBossBar(bossBarTitle, bossBarColor, BarStyle.SOLID);
         bossBar.addPlayer(player);
         bossBars.add(bossBar);
     }
