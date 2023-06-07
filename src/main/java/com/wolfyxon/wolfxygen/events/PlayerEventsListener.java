@@ -36,5 +36,10 @@ public class PlayerEventsListener implements Listener {
     public void onPlayerItemConsumeEvent(PlayerItemConsumeEvent e) {
         Player plr = e.getPlayer();
         ItemStack item = e.getItem();
+        System.out.println(item.getItemMeta().getDisplayName());
+        double oxygen = plugin.itemsMgr.getOxygenAmount(item);
+        if(oxygen > 0){
+            plugin.oxygenMgr.addOxygen(plr,oxygen);
+        }
     }
 }
