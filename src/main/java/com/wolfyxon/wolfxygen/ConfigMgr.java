@@ -75,8 +75,7 @@ public class ConfigMgr {
     public boolean getShowWhenFull(){ return  config.getBoolean("display.showWhenFull");}
     public Map<Integer,String> getActionBarStyles(){ return getIntStringMap("display.actionBarPercentageStyles"); }
 
-    public String getActionBarText(double oxygen, double maxOxygen){
-        Map<Integer,String> styles = getActionBarStyles();
+    public String getActionBarText(double oxygen, double maxOxygen,Map<Integer,String> styles){
         double percent = oxygen/maxOxygen;
         Object[] percentages = styles.keySet().toArray();
         Arrays.sort(percentages);
@@ -91,6 +90,9 @@ public class ConfigMgr {
         }
         if(!styles.containsKey(targetPercent)) return null;
         return format( styles.get(targetPercent) );
+    }
+    public String getActionBarText(double oxygen, double maxOxygen){
+        return getActionBarText(oxygen,maxOxygen,getActionBarStyles());
     }
 
 }
