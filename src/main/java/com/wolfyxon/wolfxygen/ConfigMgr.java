@@ -23,7 +23,7 @@ public class ConfigMgr {
         config = plugin.getConfig();
     }
 
-    public String format(String text){
+    public static String format(String text){
         if(text == null) return "";
         return ChatColor.translateAlternateColorCodes('&',text);
     }
