@@ -43,5 +43,15 @@ public class OxygenStorage {
     public void setOxygen(UUID uuid, double oxygen){ setOxygen(uuid.toString(), oxygen); }
     public void setOxygen(Player player, double oxygen){ setOxygen(player.getUniqueId(), oxygen); }
 
+    public void saveAll(){
+        for(Player plr : plugin.getServer().getOnlinePlayers()){
+            setOxygen(plr, oxygenMgr.getOxygen(plr) );
+        }
+    }
+    public void loadAll(){
+        for(Player plr : plugin.getServer().getOnlinePlayers()){
+            oxygenMgr.setOxygen(plr, getOxygen(plr) );
+        }
+    }
 
 }
