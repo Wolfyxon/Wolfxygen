@@ -1,8 +1,11 @@
 package com.wolfyxon.wolfxygen;
 
+import com.sun.nio.sctp.SendFailedNotification;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -49,10 +52,20 @@ public class ConfigMgr {
     public static boolean hasPermission(Player player, String permission){
         return player.isOp() || player.hasPermission(permPrefix+permission);
     }
+    public static boolean hasPermission(CommandSender sender, String permission){
+        if(sender instanceof ConsoleCommandSender) return true;
+        if(sender instanceof Player) return hasPermission((Player) sender,permission);
+        return false;
+    }
     public boolean checkAndNotifyPermission(Player player,String permission){
         boolean has = hasPermission(player,permission);
         if(!has) sendNoPermissionMessage(player);
         return has;
+    }
+    public boolean checkAndNotifyPermission(CommandSender sender, String permission){
+        if(sender instanceof ConsoleCommandSender) return true;
+        if(sender instanceof Player) return checkAndNotifyPermission((Player) sender,permission);
+        return false;
     }
     public Map<String,Object> getMap(String path){
         ConfigurationSection section = config.getConfigurationSection(path);
