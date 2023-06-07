@@ -5,6 +5,7 @@ import com.wolfyxon.wolfxygen.Wolfxygen;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class WolfxygenCommand implements CommandExecutor {
     Wolfxygen plugin;
@@ -16,5 +17,12 @@ public class WolfxygenCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         return true;
+    }
+
+    public static void sendMsg(CommandSender sender, String message){
+        sendMsg(sender,message);
+    }
+    public static void sendMsg(Player player,String message){
+        player.sendMessage( ConfigMgr.format(message) );
     }
 }
