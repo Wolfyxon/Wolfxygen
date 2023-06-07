@@ -101,9 +101,15 @@ public class OxygenMgr {
     public boolean isAffected(Player player){
         if(!player.isOnline()) return false;
         if(player.isDead()) return false;
-        if( !affectedGamemodes.contains(player.getGameMode().name().toLowerCase()) ) return false;
-        if( !affectedWorlds.contains(player.getWorld().getName()) ) return false;
+        if( !isInAffectedGameMode(player) ) return false;
+        if( !isInAffectedWorld(player) ) return false;
         return true;
+    }
+    public boolean isInAffectedGameMode(Player player){
+        return affectedGamemodes.contains(player.getGameMode().name().toLowerCase());
+    }
+    public boolean isInAffectedWorld(Player player){
+        return affectedWorlds.contains(player.getWorld().getName());
     }
 
     public void setOxygen(Player player,double amount){
