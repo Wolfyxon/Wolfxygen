@@ -100,9 +100,11 @@ public class ConfigMgr {
 
     public String getBossBarTitle(){ return format(config.getString("display.bossBar.title")); }
     public BarColor getBossBarColor(){
-        BarColor color = BarColor.valueOf(config.getString("display.bossBar.color"));
-        if(color == null) return BarColor.WHITE;
-        return color;
+        try {
+            return BarColor.valueOf(config.getString("display.bossBar.color").toUpperCase());
+        } catch (IllegalStateException e){
+            return BarColor.WHITE;
+        }
     }
 
 }
