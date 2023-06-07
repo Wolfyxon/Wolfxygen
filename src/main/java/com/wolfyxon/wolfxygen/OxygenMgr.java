@@ -101,13 +101,10 @@ public class OxygenMgr {
         }
     }
     public void deleteBossBars(){
-        for (Iterator<BossBar> iterator = bossBars.iterator(); iterator.hasNext(); ) {
-            try {
-                BossBar bar = iterator.next();
-                deleteBossBar(bar);
-            } catch (ConcurrentModificationException e){
-
-            }
+        List<BossBar> bossBarsCopy = new ArrayList<>(bossBars);
+        for (BossBar bar : bossBarsCopy) {
+            deleteBossBar(bar);
+            bossBars.remove(bar);
         }
     }
     public void deleteBossBar(BossBar bossBar){
