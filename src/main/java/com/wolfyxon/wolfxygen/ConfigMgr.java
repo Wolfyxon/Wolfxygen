@@ -98,7 +98,7 @@ public class ConfigMgr {
         return getActionBarText(oxygen,maxOxygen,getActionBarStyles());
     }
 
-    public String getBossBarTitle(){ return config.getString("display.bossBar.title"); }
+    public String getBossBarTitle(){ return format(config.getString("display.bossBar.title")); }
     public BarColor getBossBarColor(){
         BarColor color = BarColor.valueOf(config.getString("display.bossBar.color"));
         if(color == null) return BarColor.WHITE;
