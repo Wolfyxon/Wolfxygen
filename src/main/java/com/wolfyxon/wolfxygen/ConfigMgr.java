@@ -31,6 +31,7 @@ public class ConfigMgr {
     public void sendMessage(Player player, String messageSubPath){
         String msg = getMessage(messageSubPath);
         if(msg == null) return;
+        if(msg.length()==0) return;
         player.sendMessage(msg);
     }
     public Map<String,Object> getMap(String path){
