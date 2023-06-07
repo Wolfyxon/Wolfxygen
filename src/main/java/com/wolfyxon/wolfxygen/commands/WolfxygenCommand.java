@@ -22,9 +22,6 @@ public class WolfxygenCommand implements CommandExecutor {
     public static void sendMsg(CommandSender sender, String message){
         sender.sendMessage(ConfigMgr.format(message));
     }
-    public static void sendMsg(Player player,String message){
-        player.sendMessage( ConfigMgr.format(message) );
-    }
     public static void sendError(CommandSender sender, String message){
         sender.sendMessage( ConfigMgr.format("&c"+message) );
     }
