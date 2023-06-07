@@ -19,6 +19,7 @@ public final class Wolfxygen extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         loadConfig();
+        oxygenStorage.loadAll();
         oxygenMgr.startRendering();
 
         getServer().getPluginManager().registerEvents(playerEvents,this);
@@ -27,6 +28,7 @@ public final class Wolfxygen extends JavaPlugin {
 
         getLogger().info("Enabled");
     }
+
     public void loadConfig(){
         oxygenMgr.applyConfig();
         oxygenMgr.start();
@@ -39,6 +41,8 @@ public final class Wolfxygen extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        getLogger().info("Saving oxygen values...");
+        oxygenStorage.saveAll();
         getLogger().info("Disabled");
     }
 }
