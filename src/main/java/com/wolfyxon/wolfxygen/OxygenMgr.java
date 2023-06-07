@@ -77,6 +77,12 @@ public class OxygenMgr {
         bossBar.addPlayer(player);
         bossBars.add(bossBar);
     }
+    public void deleteBossBar(Player player){
+        BossBar bossBar = getBossBar(player);
+        if(bossBar == null) return;
+        bossBar.removeAll();
+        bossBars.remove(bossBar);
+    }
 
     public void startRendering(){
         scheduler.runTaskTimer(plugin, () -> {
