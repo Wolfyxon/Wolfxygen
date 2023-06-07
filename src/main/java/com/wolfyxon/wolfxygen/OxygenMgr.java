@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
+import org.bukkit.entity.Boss;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
@@ -94,11 +95,24 @@ public class OxygenMgr {
         bossBar.addPlayer(player);
         bossBars.add(bossBar);
     }
-    public void deleteBossBar(Player player){
-        BossBar bossBar = getBossBar(player);
+    public void createBossBars(){
+        for(Player plr : plugin.getServer().getOnlinePlayers()){
+            createBossBar(plr);
+        }
+    }
+    public void deleteBossBars(){
+        for(BossBar bar : bossBars){
+            deleteBossBar(bar);
+        }
+    }
+    public void deleteBossBar(BossBar bossBar){
         if(bossBar == null) return;
         bossBar.removeAll();
         bossBars.remove(bossBar);
+    }
+    public void deleteBossBar(Player player){
+        BossBar bossBar = getBossBar(player);
+        deleteBossBar(bossBar);
     }
 
     public void startRendering(){
