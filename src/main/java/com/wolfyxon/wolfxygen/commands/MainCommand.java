@@ -12,6 +12,7 @@ public class MainCommand extends WolfxygenCommand{
     }
 
     class Action {
+        public String primaryAlias;
         public String[] aliases;
         public String description;
         public String permission;
@@ -20,13 +21,31 @@ public class MainCommand extends WolfxygenCommand{
             this.aliases = aliases;
             this.description = description;
             this.permission = permission;
+            primaryAlias = aliases[0];
         }
         public Action(String alias, String description, String permission){
             this(new String[]{alias},description,permission);
         }
+        public Action(String alias, String description){
+            this(new String[]{alias},description,null);
+        }
+        public Action(String aliases[], String description){
+            this(aliases,description,null);
+        }
 
-        public boolean hasAlias(String alias){ return Arrays.asList(aliases).contains(alias); }
+        public boolean matches(String alias){ return Arrays.asList(aliases).contains(alias); }
 
+    }
+
+    Action[] actions = {
+            new Action("help","Lists subcommands and other Wolfxygen commands.")
+    };
+
+    public Action getAction(String alias){
+        for(Action a : actions){
+            if(a.matches(alias)) return a;
+        }
+        return null;
     }
 
     @Override
@@ -37,7 +56,21 @@ public class MainCommand extends WolfxygenCommand{
             sendMsg(sender,"&6https://github.com/Wolfyxon/Wolfxygen");
             return true;
         }
-        String action = args[0];
+        String strAction = args[0];
+        Action action = getAction(strAction);
+        if(action == null) {
+            sendError(sender,"Subcommand '"+strAction+"' not found");
+            return true;
+        }
+        if(action.permission != null && !config.checkAndNotifyPermission(sender,action.permission)) return true;
+        switch (action.primaryAlias){
+            case "help":{
+                sendMsg(sender,"&9&lAvailable subcommands:");
+                for( Action a : actions ){
+                    sendMsg(sender, "&6"+a.aliases.toString()+"&r: "+a.description);
+                }
+            break;}
+        }
 
         return true;
     }
