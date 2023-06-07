@@ -35,7 +35,11 @@ public class OxygenStorage {
             e.printStackTrace();
         }
     }
-    public double getOxygen(String strUUID){ return storage.getDouble(strUUID.toLowerCase()); }
+    public double getOxygen(String strUUID){
+        strUUID = strUUID.toLowerCase();
+        if(!storage.contains(strUUID)) return plugin.oxygenMgr.maxOxygen;
+        return storage.getDouble(strUUID);
+    }
     public double getOxygen(UUID uuid){ return getOxygen(uuid.toString()); }
     public double getOxygen(Player player){ return getOxygen(player.getUniqueId()); }
 
