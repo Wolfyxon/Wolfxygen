@@ -62,7 +62,7 @@ public class OxygenMgr {
     public void startRendering(){
         scheduler.runTaskTimer(plugin, () -> {
             for(Player plr : Bukkit.getOnlinePlayers()){
-                plr.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent( plugin.config.getActionBarText(getOxygen(plr),maxOxygen,actionBarStyles) ));
+                Utils.showActionBar( plr, plugin.config.getActionBarText(getOxygen(plr),maxOxygen,actionBarStyles) );
             }
         },0,5L);
     }
