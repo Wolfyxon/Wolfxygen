@@ -23,6 +23,7 @@ public class OxygenMgr {
     public long interval = 20L; // ticks: 20 = 1s
     public double maxOxygen = 10;
     public double oxygenLoss = 1;
+    public double oxygenRefilling = 1.5;
     public double damage = 0.5;
     List affectedGamemodes = List.of("survival","adventure");
     List affectedWorlds = List.of("world_nether","world_the_end");
@@ -37,6 +38,7 @@ public class OxygenMgr {
         oxygenLoss = plugin.config.getSubtractionAmount();
         damage = plugin.config.getDamage();
         interval = plugin.config.getIntervalTicks();
+        oxygenRefilling = plugin.config.getRefillingAmount();
     }
 
     BukkitScheduler scheduler = Bukkit.getScheduler();
@@ -134,6 +136,10 @@ public class OxygenMgr {
         if(oxygen>maxOxygen) oxygen = maxOxygen;
         setOxygen(player,oxygen);
     }
+    public void addOxygen(Player player){
+        addOxygen(player,oxygenRefilling);
+    }
+
     public void subtractOxygen(Player player,double amount){
         double oxygen = getOxygen(player) - amount;
         if(oxygen<0) oxygen = 0;
