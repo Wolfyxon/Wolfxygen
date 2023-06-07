@@ -3,6 +3,7 @@ package com.wolfyxon.wolfxygen.commands;
 import com.wolfyxon.wolfxygen.Wolfxygen;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
@@ -77,12 +78,17 @@ public class MainCommand extends WolfxygenCommand{
             return true;
         }
         if(action.permission != null && !config.checkAndNotifyPermission(sender,action.permission)) return true;
+        Player plr = (Player) sender;
         switch (action.primaryAlias){
             case "help":{
                 sendMsg(sender,"&9&lAvailable subcommands:");
                 for( Action a : actions ){
                     sendMsg(sender, "&6"+a.aliasesAsString()+"&r: "+a.description);
                 }
+            break;}
+            case "givepotion":{
+                //TODO: player placeholder parsing, ex. @a
+                plr.getInventory().addItem(plugin.itemsMgr.getOxygenBottle(10));
             break;}
         }
 
