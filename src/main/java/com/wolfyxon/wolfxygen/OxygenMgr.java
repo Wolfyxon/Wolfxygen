@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
+import javax.print.attribute.Size2DSyntax;
 import java.util.*;
 
 public class OxygenMgr {
@@ -55,6 +56,10 @@ public class OxygenMgr {
                         subtractOxygen(plr);
                         if(getOxygen(plr) <= 0){
                             plr.damage(damage);
+                        }
+                    } else {
+                        if(!isInAffectedGameMode(plr) || !isInAffectedWorld(plr)){
+                            addOxygen(plr);
                         }
                     }
                 }
