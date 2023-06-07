@@ -15,6 +15,9 @@ import java.util.Map;
 public class ConfigMgr {
     Wolfxygen plugin;
     FileConfiguration config;
+
+    public static String permPrefix = "wolfxygen.";
+
     public ConfigMgr(Wolfxygen plugin){
         this.plugin = plugin;
         config = plugin.getConfig();
@@ -35,6 +38,21 @@ public class ConfigMgr {
         if(msg == null) return;
         if(msg.length()==0) return;
         player.sendMessage(msg);
+    }
+    public void sendNoPermissionMessage(Player player){
+        sendMessage(player,"messages.noPermission");
+    }
+    public static String formatPermission(String permission){
+        if(permission.startsWith(permPrefix)) return permission.replace(permPrefix,"");
+        return permission;
+    }
+    public static boolean hasPermission(Player player, String permission){
+        return player.isOp() || player.hasPermission(permPrefix+permission);
+    }
+    public boolean checkAndNotifyPermission(Player player,String permission){
+        boolean has = hasPermission(player,permission);
+        if(!has) sendNoPermissionMessage(player);
+        return has;
     }
     public Map<String,Object> getMap(String path){
         ConfigurationSection section = config.getConfigurationSection(path);
