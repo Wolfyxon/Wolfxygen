@@ -50,6 +50,7 @@ public class ConfigMgr {
         return permission;
     }
     public static boolean hasPermission(Player player, String permission){
+        permission = formatPermission(permission);
         return player.isOp() || player.hasPermission(permPrefix+permission);
     }
     public static boolean hasPermission(CommandSender sender, String permission){
