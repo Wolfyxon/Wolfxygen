@@ -3,6 +3,7 @@ package com.wolfyxon.wolfxygen;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class ItemsMgr {
@@ -17,8 +18,10 @@ public class ItemsMgr {
 
     public ItemStack getOxygenBottle(double oxygenAmount){
         ItemStack item = new ItemStack(Material.POTION);
-        item.getItemMeta().getPersistentDataContainer().set(oxygenKey, PersistentDataType.DOUBLE,oxygenAmount);
-        item.getItemMeta().setDisplayName(ConfigMgr.format("&lOxygen bottle"));
+        ItemMeta meta = item.getItemMeta();
+        meta.getPersistentDataContainer().set(oxygenKey, PersistentDataType.DOUBLE,oxygenAmount);
+        meta.setDisplayName(ConfigMgr.format("&lOxygen bottle"));
+        item.setItemMeta(meta);
         return item;
     }
     public boolean isOxygenBottle(ItemStack item){
