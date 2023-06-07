@@ -58,7 +58,6 @@ public class OxygenMgr {
         task = scheduler.runTaskTimer(plugin, () -> {
                 for(Player plr : Bukkit.getOnlinePlayers()){
                     if(isAffected(plr)){
-                        plr.sendMessage(String.valueOf(getOxygen(plr)));
                         subtractOxygen(plr);
                         if(getOxygen(plr) <= 0){
                             plr.damage(damage);
