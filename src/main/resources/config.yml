@@ -30,6 +30,8 @@ numbers:
 messages:
   fullyRefilledOtherPlayer: "Refilled {playername}'s oxygen."
   fullyRefilled: "Your oxygen has been refilled."
+  noPermission: "&cYou are not allowed to do that!"
+
 display:
   #TODO: actionBar
   mode: "bossBar" # available options: bossBar
