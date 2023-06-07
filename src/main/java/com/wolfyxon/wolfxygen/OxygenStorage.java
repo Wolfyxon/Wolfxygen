@@ -12,6 +12,7 @@ import java.util.UUID;
 public class OxygenStorage {
     Wolfxygen plugin;
     ConfigMgr config;
+    OxygenMgr oxygenMgr;
 
     File file;
     String filename = "players.yml";
@@ -21,6 +22,7 @@ public class OxygenStorage {
     public OxygenStorage(Wolfxygen plugin){
         this.plugin = plugin;
         config = plugin.config;
+        oxygenMgr = plugin.oxygenMgr;
         file = new File(plugin.getDataFolder(),filename);
         if(!file.exists()){
             file.getParentFile().mkdirs();
@@ -40,5 +42,6 @@ public class OxygenStorage {
     public void setOxygen(String strUUID, double oxygen){ storage.set(strUUID.toLowerCase(), oxygen); }
     public void setOxygen(UUID uuid, double oxygen){ setOxygen(uuid.toString(), oxygen); }
     public void setOxygen(Player player, double oxygen){ setOxygen(player.getUniqueId(), oxygen); }
+
 
 }
