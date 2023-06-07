@@ -8,10 +8,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Wolfxygen extends JavaPlugin {
 
-    public OxygenStorage oxygenStorage = new OxygenStorage(this);
+
     public OxygenMgr oxygenMgr = new OxygenMgr(this);
     public ConfigMgr config = new ConfigMgr(this);
     public ItemsMgr itemsMgr = new ItemsMgr(this);
+    public OxygenStorage oxygenStorage = new OxygenStorage(this);
 
     public PlayerEventsListener playerEvents = new PlayerEventsListener(this);
 
