@@ -3,3 +3,7 @@ version: 1.0.0
 main: com.wolfyxon.wolfxygen.Wolfxygen
 api-version: 1.16
 authors: [ Wolfyxon ]
+commands:
+  wolfxygen:
+    description: Main Wolfxygen command
+    usage: /<command>
