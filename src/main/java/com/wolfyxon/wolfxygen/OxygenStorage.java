@@ -43,9 +43,22 @@ public class OxygenStorage {
     public double getOxygen(UUID uuid){ return getOxygen(uuid.toString()); }
     public double getOxygen(Player player){ return getOxygen(player.getUniqueId()); }
 
-    public void setOxygen(String strUUID, double oxygen){ storage.set(strUUID.toLowerCase(), oxygen); }
+    public void setOxygen(String strUUID, double oxygen){
+        storage.set(strUUID.toLowerCase(), oxygen);
+        saveStorage();
+    }
     public void setOxygen(UUID uuid, double oxygen){ setOxygen(uuid.toString(), oxygen); }
     public void setOxygen(Player player, double oxygen){ setOxygen(player.getUniqueId(), oxygen); }
+
+    public void saveStorage(){
+        try {
+            storage.save(file);
+        } catch (IOException e){
+            plugin.getLogger().info(ConfigMgr.format("&4Saving "+filename+" failed"));
+            e.printStackTrace();
+        }
+
+    }
 
     public void save(Player player){ setOxygen(player, oxygenMgr.getOxygen(player) ); }
     public void load(Player player){ oxygenMgr.setOxygen(player, getOxygen(player) ); }
