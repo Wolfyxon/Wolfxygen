@@ -33,6 +33,17 @@ public class MainCommand extends WolfxygenCommand{
             this(aliases,description,null);
         }
 
+        public String aliasesAsString(){
+            if(aliases.length==1) return primaryAlias;
+            String str = "[";
+            for(int i=0;i<aliases.length;i++){
+                if(i!=0) str += ",";
+                str += aliases[i];
+            }
+            str += "]";
+            return str;
+        }
+
         public boolean matches(String alias){ return Arrays.asList(aliases).contains(alias); }
 
     }
@@ -67,7 +78,7 @@ public class MainCommand extends WolfxygenCommand{
             case "help":{
                 sendMsg(sender,"&9&lAvailable subcommands:");
                 for( Action a : actions ){
-                    sendMsg(sender, "&6"+a.aliases.toString()+"&r: "+a.description);
+                    sendMsg(sender, "&6"+a.aliasesAsString()+"&r: "+a.description);
                 }
             break;}
         }
