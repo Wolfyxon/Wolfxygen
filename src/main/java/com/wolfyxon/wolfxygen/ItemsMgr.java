@@ -11,8 +11,9 @@ public class ItemsMgr {
     public ItemsMgr(Wolfxygen plugin){
         this.plugin = plugin;
         config = plugin.config;
+        oxygenKey = new NamespacedKey(plugin,"oxygenAmount");
     }
-    NamespacedKey oxygenKey = new NamespacedKey(plugin,"oxygenAmount");
+    NamespacedKey oxygenKey;
 
     public ItemStack getOxygenBottle(double oxygenAmount){
         ItemStack item = new ItemStack(Material.POTION);
