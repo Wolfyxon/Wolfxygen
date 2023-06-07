@@ -146,6 +146,7 @@ public class OxygenMgr {
     }
 
     public void setOxygen(Player player,double amount){
+        if(amount > maxOxygen) amount = maxOxygen;
         oxygenAmount.put(player,amount);
     }
     public void prepare(Player player){
