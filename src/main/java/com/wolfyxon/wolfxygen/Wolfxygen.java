@@ -10,6 +10,7 @@ public final class Wolfxygen extends JavaPlugin {
 
     public OxygenMgr oxygenMgr = new OxygenMgr(this);
     public ConfigMgr config = new ConfigMgr(this);
+    public ItemsMgr itemsMgr = new ItemsMgr(this);
 
     public PlayerEventsListener playerEvents = new PlayerEventsListener(this);
 
