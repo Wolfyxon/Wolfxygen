@@ -5,9 +5,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class PlayerRespawnEventListener implements Listener {
+public class PlayerEventsListener implements Listener {
     Wolfxygen plugin;
-    public PlayerRespawnEventListener(Wolfxygen plugin){
+    public PlayerEventsListener(Wolfxygen plugin){
         this.plugin = plugin;
     }
     @EventHandler
