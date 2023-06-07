@@ -11,6 +11,6 @@ public class MainCommand extends WolfxygenCommand{
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         sender.sendMessage("test");
-        return false;
+        return true;
     }
 }
