@@ -10,7 +10,12 @@ public class MainCommand extends WolfxygenCommand{
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        sender.sendMessage("test");
+        if(args.length == 0){
+            sendMsg(sender,"&9Wolfxygen");
+            sendMsg(sender,"&5by &4Wolfyxon");
+            sendMsg(sender,"&6https://github.com/Wolfyxon/Wolfxygen");
+            return true;
+        }
         return true;
     }
 }
