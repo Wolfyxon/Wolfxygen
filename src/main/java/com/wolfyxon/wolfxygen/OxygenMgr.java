@@ -23,7 +23,10 @@ public class OxygenMgr {
     List affectedGamemodes = List.of("survival","adventure");
     List affectedWorlds = List.of("world_nether","world_the_end");
 
+    Map<Integer,String> actionBarStyles;
+
     public void applyConfig(){
+        actionBarStyles = plugin.config.getActionBarStyles();
         affectedGamemodes = plugin.config.getAffectedGamemodes();
         affectedWorlds = plugin.config.getAffectedWorlds();
         maxOxygen = plugin.config.getMaxOxygen();
@@ -59,7 +62,7 @@ public class OxygenMgr {
     public void startRendering(){
         scheduler.runTaskTimer(plugin, () -> {
             for(Player plr : Bukkit.getOnlinePlayers()){
-                plr.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent( plugin.config.getActionBarText(getOxygen(plr),maxOxygen) ));
+                plr.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent( plugin.config.getActionBarText(getOxygen(plr),maxOxygen,actionBarStyles) ));
             }
         },0,5L);
     }
