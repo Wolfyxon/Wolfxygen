@@ -14,4 +14,5 @@ public class PlayerEventsListener implements Listener {
     public void onRespawn(PlayerRespawnEvent q) {
         plugin.oxygenMgr.setOxygen(q.getPlayer(),plugin.oxygenMgr.maxOxygen);
     }
+
 }
