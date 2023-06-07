@@ -20,6 +20,7 @@ public class ConfigMgr {
     }
 
     public String format(String text){
+        if(text == null) return "";
         return ChatColor.translateAlternateColorCodes('&',text);
     }
 
