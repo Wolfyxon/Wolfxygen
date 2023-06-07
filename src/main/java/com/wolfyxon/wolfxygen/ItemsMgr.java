@@ -7,8 +7,10 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class ItemsMgr {
     Wolfxygen plugin;
+    ConfigMgr config;
     public ItemsMgr(Wolfxygen plugin){
         this.plugin = plugin;
+        config = plugin.config;
     }
     NamespacedKey oxygenKey = new NamespacedKey(plugin,"oxygenAmount");
 
