@@ -37,6 +37,10 @@ display:
   mode: "bossBar" # available options: bossBar
   showWhenFull: false
 
+  bossBar:
+    title: "Oxygen"
+    color: "white"
+
   actionBarPercentageStyles:
     #IMPORTANT: the numbers are in percentages, not oxygen values.
     #{oxygen} will be replaced by the player's oxygen amount.

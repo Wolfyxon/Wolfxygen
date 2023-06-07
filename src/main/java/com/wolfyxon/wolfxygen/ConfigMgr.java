@@ -2,6 +2,7 @@ package com.wolfyxon.wolfxygen;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.boss.BarColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -95,6 +96,13 @@ public class ConfigMgr {
     }
     public String getActionBarText(double oxygen, double maxOxygen){
         return getActionBarText(oxygen,maxOxygen,getActionBarStyles());
+    }
+
+    public String getBossBarTitle(){ return config.getString("display.bossBar.title"); }
+    public BarColor getBossBarColor(){
+        BarColor color = BarColor.valueOf(config.getString("display.bossBar.color"));
+        if(color == null) return BarColor.WHITE;
+        return color;
     }
 
 }
