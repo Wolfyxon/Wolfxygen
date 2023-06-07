@@ -30,8 +30,6 @@ numbers:
 messages:
   fullyRefilledOtherPlayer: "Refilled {playername}'s oxygen."
   fullyRefilled: "Your oxygen has been refilled."
-  configReloaded: "Plugin configuration has been reloaded"
-
 display:
   #TODO: actionBar
   mode: "bossBar" # available options: bossBar
