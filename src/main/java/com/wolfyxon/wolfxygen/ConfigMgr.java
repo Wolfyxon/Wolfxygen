@@ -78,13 +78,13 @@ public class ConfigMgr {
     public String getActionBarText(double oxygen, double maxOxygen){
         Map<Integer,String> styles = getActionBarStyles();
         double percent = oxygen/maxOxygen;
-        Integer[] percentages = (Integer[]) styles.entrySet().toArray();
+        Object[] percentages = styles.keySet().toArray();
         Arrays.sort(percentages);
         int targetPercent = 0;
-        System.out.println(Arrays.toString(percentages));
-        for(Integer p : percentages){
-            if(percent >= p){
-                targetPercent = p;
+
+        for(Object p : percentages){
+            if(percent >= (Integer) p){
+                targetPercent = (Integer) p;
             } else {
                 break;
             }
