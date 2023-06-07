@@ -49,7 +49,10 @@ public class MainCommand extends WolfxygenCommand{
     }
 
     Action[] actions = {
-            new Action("help","Lists subcommands and other Wolfxygen commands.")
+            new Action("help","Lists subcommands and other Wolfxygen commands."),
+            new Action("reload","Reloads the plugin configuration.","reload"),
+            new Action(new String[]{"givepotion", "getpotion","givebottle","getbottle"},"Gives you or another player an oxygen bottle.","givepotion"),
+
     };
 
     public Action getAction(String alias){
