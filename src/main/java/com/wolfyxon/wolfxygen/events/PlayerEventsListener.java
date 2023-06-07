@@ -21,11 +21,11 @@ public class PlayerEventsListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-
+        plugin.oxygenMgr.createBossBar(e.getPlayer());
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
-
+        plugin.oxygenMgr.deleteBossBar(event.getPlayer());
     }
 }
