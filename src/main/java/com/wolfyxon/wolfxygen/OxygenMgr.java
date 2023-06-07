@@ -89,7 +89,9 @@ public class OxygenMgr {
             for(Player plr : Bukkit.getOnlinePlayers()){
                 BossBar bar = getBossBar(plr);
                 if(bar != null){
-                    bar.setProgress(getOxygenPercentage(plr));
+                    double p = getOxygenPercentage(plr);
+                    bar.setProgress(p);
+                    bar.setVisible( plugin.config.getShowWhenFull() || (p < 1) );
                 }
                 //Utils.showActionBar( plr, plugin.config.getActionBarText(getOxygen(plr),maxOxygen,actionBarStyles) );
             }
@@ -129,7 +131,7 @@ public class OxygenMgr {
     }
     public void subtractOxygen(Player player,double amount){
         double oxygen = getOxygen(player) - amount;
-        if(amount<0) oxygen = 0;
+        if(oxygen<0) oxygen = 0;
         setOxygen(player,oxygen);
     }
     public void subtractOxygen(Player player){ subtractOxygen(player,oxygenLoss); }
