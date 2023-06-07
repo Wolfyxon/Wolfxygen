@@ -26,6 +26,8 @@ public class OxygenMgr {
     public double oxygenLoss = 1;
     public double oxygenRefilling = 1.5;
     public double damage = 0.5;
+    boolean refillInUnaffectedGamemodes = true;
+    boolean refillInUnaffectedWorlds = true;
     List affectedGamemodes = List.of("survival","adventure");
     List affectedWorlds = List.of("world_nether","world_the_end");
 
@@ -36,6 +38,8 @@ public class OxygenMgr {
 
     public void applyConfig(){
         actionBarStyles = plugin.config.getActionBarStyles();
+        refillInUnaffectedGamemodes = plugin.config.getRefillInUnaffectedGamemodes();
+        refillInUnaffectedWorlds = plugin.config.getRefillInUnaffectedGamemodes();
         affectedGamemodes = plugin.config.getAffectedGamemodes();
         affectedWorlds = plugin.config.getAffectedWorlds();
         maxOxygen = plugin.config.getMaxOxygen();
@@ -63,7 +67,10 @@ public class OxygenMgr {
                             plr.damage(damage);
                         }
                     } else {
-                        if(!isInAffectedGameMode(plr) || !isInAffectedWorld(plr)){
+                        if(
+                                ( refillInUnaffectedGamemodes && !isInAffectedGameMode(plr) ) ||
+                                ( refillInUnaffectedWorlds && !isInAffectedWorld(plr) )
+                        ){
                             addOxygen(plr);
                         }
                     }
