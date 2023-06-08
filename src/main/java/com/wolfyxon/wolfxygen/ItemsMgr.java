@@ -8,6 +8,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.List;
+
 public class ItemsMgr {
     Wolfxygen plugin;
     ConfigMgr config;
@@ -18,11 +20,13 @@ public class ItemsMgr {
     }
     NamespacedKey oxygenKey;
     String potionName = "$lOxygen bottle";
+    String potionLore = "&a+{oxygen}";
     Color potionColor = Color.WHITE;
 
     public void applyConfig(){
         potionName = config.getPotionName();
         potionColor = config.getOxygenPotionColor();
+        potionLore = config.getPotionLore();
     }
 
     public ItemStack getOxygenBottle(double oxygenAmount){
@@ -30,6 +34,7 @@ public class ItemsMgr {
         PotionMeta meta = (PotionMeta) item.getItemMeta();
         meta.getPersistentDataContainer().set(oxygenKey, PersistentDataType.DOUBLE,oxygenAmount);
         meta.setDisplayName(ConfigMgr.format(potionName));
+        meta.setLore(List.of( ConfigMgr.format( potionLore.replace("{oxygen}",String.valueOf(oxygenAmount)) ) ) );
         meta.setColor(potionColor);
         
         item.setItemMeta(meta);
