@@ -34,7 +34,6 @@ public final class Wolfxygen extends JavaPlugin {
     public void loadConfig(){
         reloadConfig();
         config.load();
-        System.out.println(config.getBossBarColor().toString());
         oxygenMgr.applyConfig();
         oxygenMgr.start();
         itemsMgr.applyConfig();
