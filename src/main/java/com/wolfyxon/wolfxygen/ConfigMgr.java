@@ -24,6 +24,10 @@ public class ConfigMgr {
 
     public ConfigMgr(Wolfxygen plugin){
         this.plugin = plugin;
+        load();
+    }
+
+    public void load(){
         config = plugin.getConfig();
     }
 

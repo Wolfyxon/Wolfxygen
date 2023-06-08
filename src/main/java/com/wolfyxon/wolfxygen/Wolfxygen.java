@@ -22,7 +22,6 @@ public final class Wolfxygen extends JavaPlugin {
         saveDefaultConfig();
         loadConfig();
         oxygenStorage.loadAll();
-        oxygenMgr.createBossBars();
         oxygenMgr.startRendering();
 
         getServer().getPluginManager().registerEvents(playerEvents,this);
@@ -33,9 +32,15 @@ public final class Wolfxygen extends JavaPlugin {
     }
 
     public void loadConfig(){
+        reloadConfig();
+        config.load();
+        System.out.println(config.getBossBarColor().toString());
         oxygenMgr.applyConfig();
         oxygenMgr.start();
         itemsMgr.applyConfig();
+        oxygenMgr.deleteBossBars();
+        oxygenMgr.createBossBars();
+
         getLogger().info("Config has been loaded");
     }
     public void registerCommand(String name, WolfxygenCommand handler){
