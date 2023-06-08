@@ -17,13 +17,20 @@ public class ItemsMgr {
         oxygenKey = new NamespacedKey(plugin,"oxygenAmount");
     }
     NamespacedKey oxygenKey;
+    String potionName = "$lOxygen bottle";
+    Color potionColor = Color.WHITE;
+
+    public void applyConfig(){
+        potionName = config.getPotionName();
+        potionColor = config.getOxygenPotionColor();
+    }
 
     public ItemStack getOxygenBottle(double oxygenAmount){
         ItemStack item = new ItemStack(Material.POTION);
         PotionMeta meta = (PotionMeta) item.getItemMeta();
         meta.getPersistentDataContainer().set(oxygenKey, PersistentDataType.DOUBLE,oxygenAmount);
-        meta.setDisplayName(ConfigMgr.format("&lOxygen bottle"));
-        meta.setColor(Color.WHITE);
+        meta.setDisplayName(ConfigMgr.format(potionName));
+        meta.setColor(potionColor);
         
         item.setItemMeta(meta);
         return item;
