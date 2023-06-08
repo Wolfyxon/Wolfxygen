@@ -90,6 +90,10 @@ public class MainCommand extends WolfxygenCommand{
             break;}
             case "givepotion":{
                 //TODO: player placeholder parsing, ex. @a
+                if( !(sender instanceof Player) ){
+                    sendError(sender,"Only players can run this subcommand.");
+                    return true;
+                }
                 plr.getInventory().addItem(plugin.itemsMgr.getOxygenBottle(10));
             break;}
             case "reload":{
