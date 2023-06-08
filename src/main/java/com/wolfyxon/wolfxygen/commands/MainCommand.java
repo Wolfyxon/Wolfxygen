@@ -92,6 +92,10 @@ public class MainCommand extends WolfxygenCommand{
                 //TODO: player placeholder parsing, ex. @a
                 plr.getInventory().addItem(plugin.itemsMgr.getOxygenBottle(10));
             break;}
+            case "reload":{
+                plugin.loadConfig();
+                sendMsg(sender,"&aConfig has been reloaded");
+            break;}
         }
 
         return true;
