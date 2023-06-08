@@ -22,11 +22,13 @@ public class ItemsMgr {
     String potionName = "$lOxygen bottle";
     String potionLore = "&a+{oxygen}";
     Color potionColor = Color.WHITE;
+    double defaultOxygen = 10;
 
     public void applyConfig(){
         potionName = config.getPotionName();
         potionColor = config.getOxygenPotionColor();
         potionLore = config.getPotionLore();
+        defaultOxygen = config.getPotionOxygenAmount();
     }
 
     public ItemStack getOxygenBottle(double oxygenAmount){
@@ -39,6 +41,9 @@ public class ItemsMgr {
         
         item.setItemMeta(meta);
         return item;
+    }
+    public ItemStack getOxygenBottle(){
+        return getOxygenBottle(defaultOxygen);
     }
     public boolean isOxygenBottle(ItemStack item){
         return item.getItemMeta().getPersistentDataContainer().has(oxygenKey,PersistentDataType.DOUBLE);
