@@ -1,9 +1,11 @@
 package com.wolfyxon.wolfxygen;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 public class ItemsMgr {
@@ -18,9 +20,11 @@ public class ItemsMgr {
 
     public ItemStack getOxygenBottle(double oxygenAmount){
         ItemStack item = new ItemStack(Material.POTION);
-        ItemMeta meta = item.getItemMeta();
+        PotionMeta meta = (PotionMeta) item.getItemMeta();
         meta.getPersistentDataContainer().set(oxygenKey, PersistentDataType.DOUBLE,oxygenAmount);
         meta.setDisplayName(ConfigMgr.format("&lOxygen bottle"));
+        meta.setColor(Color.WHITE);
+        
         item.setItemMeta(meta);
         return item;
     }
