@@ -4,6 +4,7 @@ import com.wolfyxon.wolfxygen.commands.MainCommand;
 import com.wolfyxon.wolfxygen.commands.WolfxygenCommand;
 import com.wolfyxon.wolfxygen.events.PlayerEventsListener;
 import org.bukkit.Bukkit;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Wolfxygen extends JavaPlugin {
@@ -37,8 +38,10 @@ public final class Wolfxygen extends JavaPlugin {
         itemsMgr.applyConfig();
         getLogger().info("Config has been loaded");
     }
-    public void registerCommand(String name, WolfxygenCommand executor){
-        getCommand(name).setExecutor(executor);
+    public void registerCommand(String name, WolfxygenCommand handler){
+        PluginCommand command = getCommand(name);
+        command.setExecutor(handler);
+        if(Utils.hasMethod(handler,"onTabComplete")) command.setTabCompleter(handler);
     }
 
 
