@@ -34,6 +34,7 @@ public final class Wolfxygen extends JavaPlugin {
     public void loadConfig(){
         oxygenMgr.applyConfig();
         oxygenMgr.start();
+        itemsMgr.applyConfig();
         getLogger().info("Config has been loaded");
     }
     public void registerCommand(String name, WolfxygenCommand executor){
