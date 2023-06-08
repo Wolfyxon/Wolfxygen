@@ -32,6 +32,12 @@ messages:
   fullyRefilled: "Your oxygen has been refilled."
   noPermission: "&cYou are not allowed to do that!"
 
+potions:
+  name: "&lOxygen bottle"
+  color: "white"
+  lore: "&a+{oxygen}" # bottom text shown when hovering on the potion
+  defaultOxygen: 20 # default amount of how much oxygen the potion restores
+
 display:
   #TODO: actionBar
   mode: "bossBar" # available options: bossBar
