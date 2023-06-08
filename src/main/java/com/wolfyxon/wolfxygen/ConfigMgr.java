@@ -33,7 +33,7 @@ public class ConfigMgr {
     }
 
     public String getMessage(String subPath){
-        String msg = config.getString("message."+subPath);
+        String msg = config.getString("messages."+subPath);
         if(msg == null) return null;
         return format(msg);
     }
