@@ -3,6 +3,7 @@ package com.wolfyxon.wolfxygen;
 import com.sun.nio.sctp.SendFailedNotification;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.boss.BarColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -137,6 +138,16 @@ public class ConfigMgr {
         } catch (IllegalStateException e){
             return BarColor.WHITE;
         }
+    }
+
+    public String getPotionName(){
+        return format( config.getString("potion.name") );
+    }
+    public String getPotionLore(){
+        return format( config.getString("potion.lore") );
+    }
+    public Color getOxygenPotionColor(){
+        return Utils.parseColor( config.getString("potion.color") );
     }
 
 }
