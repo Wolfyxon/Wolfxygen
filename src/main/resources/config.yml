@@ -36,7 +36,7 @@ messages:
 potion:
   name: "&lOxygen bottle"
   color: "white"
-  lore: "&a+{oxygen}" # bottom text shown when hovering on the potion. {oxygen} will be replaced by the restored oxygen
+  lore: "&a+{oxygen} oxygen" # bottom text shown when hovering on the potion. {oxygen} will be replaced by the restored oxygen
   defaultOxygen: 20 # default amount of how much oxygen the potion restores
 
 display:
