@@ -5,6 +5,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,15 @@ public class Utils {
         }
 
         return def;
+    }
+    public static boolean hasMethod(Object object, String methodName) {
+        Method[] methods = object.getClass().getMethods();
+        for (Method method : methods) {
+            if (method.getName().equals(methodName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
