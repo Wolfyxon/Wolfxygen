@@ -44,7 +44,7 @@ public class PlayerEventsListener implements Listener {
         double oxygen = plugin.itemsMgr.getOxygenAmount(item);
         if(oxygen > 0){
             plugin.oxygenMgr.addOxygen(plr,oxygen);
+            plr.sendMessage(ConfigMgr.format( plugin.config.getMessage("potionDrank").replace("{oxygen}",String.valueOf(oxygen)) ));
         }
-        plr.sendMessage(ConfigMgr.format( plugin.config.getMessage("potionDrank").replace("{oxygen}",String.valueOf(oxygen)) ));
     }
 }
