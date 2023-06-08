@@ -33,7 +33,7 @@ messages:
   potionDrank: "&aRestored {oxygen} oxygen."
   noPermission: "&cYou are not allowed to do that!"
 
-potions:
+potion:
   name: "&lOxygen bottle"
   color: "white"
   lore: "&a+{oxygen}" # bottom text shown when hovering on the potion. {oxygen} will be replaced by the restored oxygen
