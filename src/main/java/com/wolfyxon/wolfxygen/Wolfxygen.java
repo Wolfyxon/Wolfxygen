@@ -3,7 +3,6 @@ package com.wolfyxon.wolfxygen;
 import com.wolfyxon.wolfxygen.commands.MainCommand;
 import com.wolfyxon.wolfxygen.commands.WolfxygenCommand;
 import com.wolfyxon.wolfxygen.events.PlayerEventsListener;
-import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 

@@ -1,7 +1,5 @@
 package com.wolfyxon.wolfxygen;
 
-import com.sun.nio.sctp.SendFailedNotification;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.boss.BarColor;
