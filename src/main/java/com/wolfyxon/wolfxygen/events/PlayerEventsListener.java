@@ -1,5 +1,6 @@
 package com.wolfyxon.wolfxygen.events;
 
+import com.wolfyxon.wolfxygen.ConfigMgr;
 import com.wolfyxon.wolfxygen.Wolfxygen;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,5 +46,6 @@ public class PlayerEventsListener implements Listener {
         if(oxygen > 0){
             plugin.oxygenMgr.addOxygen(plr,oxygen);
         }
+        plr.sendMessage(ConfigMgr.format( plugin.config.getMessage("potionDrank").replace("{oxygen}",String.valueOf(oxygen)) ));
     }
 }
