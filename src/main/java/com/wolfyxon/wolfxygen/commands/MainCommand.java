@@ -117,6 +117,17 @@ public class MainCommand extends WolfxygenCommand{
             }
             return res;
         }
+        String strAction = args[0];
+        Action action = getAction(strAction);
+        if(action == null) return null;
+        String als = action.primaryAlias;
+        switch (als){
+            case "givepotion":{
+                res.add("default");
+                res.add("<number>");
+            break;}
+        }
+
         return res;
     }
 }
