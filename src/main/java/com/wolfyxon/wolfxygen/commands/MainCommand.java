@@ -5,7 +5,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainCommand extends WolfxygenCommand{
     public MainCommand(Wolfxygen plugin) {
@@ -93,5 +95,19 @@ public class MainCommand extends WolfxygenCommand{
         }
 
         return true;
+    }
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> res = new ArrayList<>();
+
+        if(args.length == 1){
+            for(Action a : actions){
+                for(String als : a.aliases){
+                    res.add(als);
+                }
+            }
+            return res;
+        }
+        return res;
     }
 }
