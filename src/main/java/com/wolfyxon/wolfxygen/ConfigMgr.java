@@ -153,5 +153,6 @@ public class ConfigMgr {
     public Color getOxygenPotionColor(){
         return Utils.parseColor( config.getString("potion.color") );
     }
+    public double getPotionOxygenAmount() { return config.getDouble("potion.defaultOxygen"); }
 
 }
