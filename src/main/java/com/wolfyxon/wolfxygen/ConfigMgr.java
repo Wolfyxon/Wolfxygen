@@ -46,7 +46,7 @@ public class ConfigMgr {
         player.sendMessage(msg);
     }
     public void sendNoPermissionMessage(Player player){
-        sendMessage(player,"messages.noPermission");
+        sendMessage(player,"noPermission");
     }
     public static String formatPermission(String permission){
         if(permission.startsWith(permPrefix)) return permission.replace(permPrefix,"");
