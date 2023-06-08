@@ -90,12 +90,26 @@ public class MainCommand extends WolfxygenCommand{
             break;}
             case "givepotion":{
                 //TODO: player placeholder parsing, ex. @a
-                //TODO: custom oxygen amount
                 if( !(sender instanceof Player) ){
                     sendError(sender,"Only players can run this subcommand.");
                     return true;
                 }
-                plr.getInventory().addItem(plugin.itemsMgr.getOxygenBottle());
+                double amount = config.getPotionOxygenAmount();
+                if(args.length >= 2){
+                    if( !args[1].equals("default") ){
+                        try {
+                            amount = Double.parseDouble(args[1]);
+                        } catch (NumberFormatException e){
+                            sendError(sender,"Invalid number");
+                            return true;
+                        }
+                    }
+                    if(amount < 0){
+                        sendError(sender,"Amount must be positive");
+                        return true;
+                    }
+                }
+                plr.getInventory().addItem(plugin.itemsMgr.getOxygenBottle(amount));
             break;}
             case "reload":{
                 plugin.loadConfig();
