@@ -15,7 +15,6 @@ public class MainCommand extends WolfxygenCommand{
     }
 
     class Action {
-        public String primaryAlias;
         public String[] aliases;
         public String description;
         public String permission;
@@ -24,7 +23,6 @@ public class MainCommand extends WolfxygenCommand{
             this.aliases = aliases;
             this.description = description;
             this.permission = permission;
-            primaryAlias = aliases[0];
         }
         public Action(String alias, String description, String permission){
             this(new String[]{alias},description,permission);
@@ -36,8 +34,12 @@ public class MainCommand extends WolfxygenCommand{
             this(aliases,description,null);
         }
 
+        public String getPrimaryAlias(){
+            return aliases[0];
+        }
+
         public String aliasesAsString(){
-            if(aliases.length==1) return primaryAlias;
+            if(aliases.length==1) return getPrimaryAlias();
             String str = "[";
             for(int i=0;i<aliases.length;i++){
                 if(i!=0) str += ",";
@@ -81,7 +83,7 @@ public class MainCommand extends WolfxygenCommand{
         }
         if(action.permission != null && !config.checkAndNotifyPermission(sender,action.permission)) return true;
         Player plr = (Player) sender;
-        switch (action.primaryAlias){
+        switch (action.getPrimaryAlias()){
             case "help":{
                 sendMsg(sender,"&9&lAvailable subcommands:");
                 for( Action a : actions ){
@@ -134,7 +136,7 @@ public class MainCommand extends WolfxygenCommand{
         String strAction = args[0];
         Action action = getAction(strAction);
         if(action == null) return null;
-        String als = action.primaryAlias;
+        String als = action.getPrimaryAlias();
         switch (als){
             case "givepotion":{
                 res.add("default");
