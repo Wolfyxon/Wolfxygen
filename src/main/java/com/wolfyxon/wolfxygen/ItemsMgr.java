@@ -25,7 +25,7 @@ public class ItemsMgr {
 
     public void applyConfig(){
         potionName = config.getPotionName();
-        potionColor = config.getOxygenPotionColor();
+        potionColor = config.getPotionColor();
         potionLore = config.getPotionLore();
         defaultOxygen = config.getPotionOxygenAmount();
     }

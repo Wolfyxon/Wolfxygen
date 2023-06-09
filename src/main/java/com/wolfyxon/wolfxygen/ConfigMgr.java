@@ -148,7 +148,7 @@ public class ConfigMgr {
     public String getPotionLore(){
         return format( config.getString("potion.lore") );
     }
-    public Color getOxygenPotionColor(){
+    public Color getPotionColor(){
         return Utils.parseColor( config.getString("potion.color") );
     }
     public double getPotionOxygenAmount() { return config.getDouble("potion.defaultOxygen"); }
