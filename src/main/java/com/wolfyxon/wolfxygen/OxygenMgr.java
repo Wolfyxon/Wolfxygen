@@ -185,7 +185,11 @@ public class OxygenMgr {
         return Utils.multiReplace(str,repl);
     }
     public String format(String str, Player player){
-        return format(str, getOxygen(player) );
+        Map<String,String> repl = new HashMap<>();
+        repl.put("{username}",player.getName());
+        repl.put("{uuid}",player.getUniqueId().toString());
+
+        return format( Utils.multiReplace(str,repl) , getOxygen(player) );
     }
 
 
