@@ -176,14 +176,16 @@ public class OxygenMgr {
     }
     public void subtractOxygen(Player player){ subtractOxygen(player,oxygenLoss); }
 
-    public String format(String str, Player player){
-        double oxygen = getOxygen(player);
+    public String format(String str, double oxygen){
         Map<String,String> repl = new HashMap<>();
         repl.put("{oxygen}", String.valueOf(oxygen) );
         repl.put("{oxygen%}", String.valueOf( getOxygenPercentage(oxygen) ) );
         repl.put("{maxOxygen}", String.valueOf(maxOxygen) );
 
         return Utils.multiReplace(str,repl);
+    }
+    public String format(String str, Player player){
+        return format(str, getOxygen(player) );
     }
 
 
