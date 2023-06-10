@@ -119,6 +119,7 @@ public class OxygenMgr {
                 if(bar != null){
                     double p = getOxygenPercentage(plr);
                     bar.setProgress(p);
+                    bar.setTitle( format(bossBarTitle, plr) );
                     bar.setVisible( plugin.config.getShowWhenFull() || (p < 1) );
                 }
                 //Utils.showActionBar( plr, plugin.config.getActionBarText(getOxygen(plr),maxOxygen,actionBarStyles) );
