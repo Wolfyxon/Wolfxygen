@@ -86,7 +86,7 @@ public class OxygenMgr {
     }
     public void createBossBar(Player player){
         if(getBossBar(player) != null) return;
-        BossBar bossBar = Bukkit.createBossBar(bossBarTitle, bossBarColor, BarStyle.SOLID);
+        BossBar bossBar = Bukkit.createBossBar(format(bossBarTitle,player), bossBarColor, BarStyle.SOLID);
         bossBar.addPlayer(player);
         bossBars.add(bossBar);
     }
