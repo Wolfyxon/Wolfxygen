@@ -154,11 +154,12 @@ public class OxygenMgr {
     }
     public double getOxygenPercentage(Player player){
         prepare(player);
-        double amt = getOxygen(player);
-        if(amt == 0) return 0;
-        return amt / maxOxygen;
+        return getOxygenPercentage(getOxygen(player));
     }
-
+    public double getOxygenPercentage(double amount){
+        if(amount == 0) return 0;
+        return amount / maxOxygen;
+    }
     public void addOxygen(Player player,double amount){
         double oxygen = getOxygen(player) + amount;
         if(oxygen>maxOxygen) oxygen = maxOxygen;
